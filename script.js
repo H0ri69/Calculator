@@ -1,9 +1,13 @@
 const display = document.getElementById('display');
 const buttons = document.querySelectorAll('button');
+const darkLightSwitch = document.getElementById('darkLightSwitch');
+const themeLink = document.getElementById('theme-style');
+
 let currentCalculation = '';
 let equalPressCount = 0;
 const requiredPresses = 3;
 let resultShown = false;
+let isDarkMode = false;
 
 const insults = [
     "My 3-year-old brother could do better!",
@@ -58,22 +62,6 @@ const insults = [
     "Your math skills make me want to go back to being an abacus!"
 ];
 
-buttons.forEach(button => {
-    button.addEventListener('click', () => handleButtonClick(button.id));
-});
-
-function handleButtonClick(buttonId) {
-    if (buttonId === 'equal') {
-        handleEquals();
-    } else if (buttonId === 'clear') {
-        clearCalculator();
-    } else if (buttonId === 'backspace') {
-        backspace();
-    } else {
-        appendToCalculation(buttonId);
-    }
-}
-
 const errorMessages = [
     "Nice try, but math doesn't work that way!",
     "Even a calculator has its limits, you know?",
@@ -87,11 +75,22 @@ const errorMessages = [
     "Math.exe has stopped working"
 ];
 
+function handleButtonClick(buttonId) {
+    if (buttonId === 'equal') {
+        handleEquals();
+    } else if (buttonId === 'clear') {
+        clearCalculator();
+    } else if (buttonId === 'backspace') {
+        backspace();
+    } else {
+        appendToCalculation(buttonId);
+    }
+}
+
 function handleEquals() {
     if (resultShown) {
         return; // Do nothing if result is already shown
     }
-
     try {
         const result = eval(currentCalculation);
         if (isNaN(result) || !isFinite(result)) {
@@ -146,6 +145,37 @@ function setDisplayText(text) {
     display.style.height = display.scrollHeight + 'px';
 }
 
+function toggleTheme() {
+    isDarkMode = !isDarkMode;
+    document.body.style.transition = 'background-color 0.7s ease';
+    
+    if (isDarkMode) {
+        document.body.style.backgroundColor = '#121212'; // Dark mode background color
+        setTimeout(() => {
+            themeLink.href = 'style-dark.css';
+        }, 350); // Half of the transition time
+        darkLightSwitch.textContent = '☀️'; // Sun emoji for light mode switch
+    } else {
+        document.body.style.backgroundColor = '#f0f0f0'; // Light mode background color
+        setTimeout(() => {
+            themeLink.href = 'style.css';
+        }, 350); // Half of the transition time
+        darkLightSwitch.textContent = '🌙'; // Moon emoji for dark mode switch
+    }
+}
+
+// Event Listeners
+buttons.forEach(button => {
+    if (button.id !== 'darkLightSwitch') {
+        button.addEventListener('click', () => handleButtonClick(button.id));
+    }
+});
+
+darkLightSwitch.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default button behavior
+    toggleTheme();
+});
+
 // Allow keyboard input
 display.addEventListener('input', function(e) {
     currentCalculation = this.value;
@@ -160,3 +190,6 @@ display.addEventListener('keypress', function(e) {
         handleEquals();
     }
 });
+
+// Initialize the switch text
+darkLightSwitch.textContent = '🌙';

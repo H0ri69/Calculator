@@ -10,11 +10,11 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #000000e3;
 }
 
 .calculator {
-  background-color: #ffffff;
+  background-color: #050505;
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
@@ -31,8 +31,8 @@ body {
   margin-bottom: 20px;
   border: none;
   border-radius: 8px;
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: #aca8a8;
+  color: #000000;
   resize: none;
   overflow-y: auto;
   word-wrap: break-word;
@@ -47,17 +47,17 @@ body {
 
 button {
   border: none;
-  border-radius: 8px;
+  border-radius: 50%;
   font-size: 24px;
   height: 70px;
   cursor: pointer;
   transition: all 0.2s ease;
-  background-color: #e0e0e0;
-  color: #333;
+  background-color: #4b4a4a;
+  color: #ffffff;
 }
 
 button:hover {
-  background-color: #d0d0d0;
+  background-color: #4b4a4a88;
 }
 
 button:active {
@@ -65,18 +65,18 @@ button:active {
 }
 
 .operator {
-  background-color: #f0f0f0;
-  color: #2196f3;
+  background-color: #f1a33c;
+  color: #ffffff;
 }
 
 #clear,
 #backspace {
-  background-color: #ffd54f;
+  background-color: #a7a5a1;
   color: #333;
 }
 
 #equal {
-  background-color: #4caf50;
+  background-color: #f1a33c;
   color: white;
 }
 
@@ -101,54 +101,19 @@ button {
 }
 
 :root {
-  --bg-color: #f0f0f0;
-  --calculator-bg: #ffffff;
-  --display-bg: #f5f5f5;
-  --text-color: #333;
-  --button-bg: #e0e0e0;
-  --button-color: #333;
-  --operator-color: #2196f3;
-  --clear-bg: #ffd54f;
-  --equal-bg: #4caf50;
+  --bg-color: #121212;
+  --calculator-bg: #1e1e1e;
+  --display-bg: #2c2c2c;
+  --text-color: #ffffff;
+  --button-bg: #333333;
+  --button-color: #ffffff;
+  --operator-color: #4caf50;
+  --clear-bg: #ff9800;
+  --equal-bg: #2196f3;
   --equal-color: white;
 }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.calculator {
-  background-color: var(--calculator-bg);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#display {
-  background-color: var(--display-bg);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-button {
-  background-color: var(--button-bg);
-  color: var(--button-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.operator {
-  color: var(--operator-color);
-}
-
-#clear,
-#backspace {
-  background-color: var(--clear-bg);
-}
-
-#equal {
-  background-color: var(--equal-bg);
-  color: var(--equal-color);
-}
+/* The rest of the CSS remains the same as in style.css */
 
 body,
 .calculator,
