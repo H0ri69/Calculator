@@ -132,6 +132,11 @@ button {
   transition: box-shadow 0.3s ease;
 }
 
+#display {
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
 #display:focus {
   box-shadow: 0 0 0 2px #f1a33c; /* This creates a subtle orange glow when focused */
 }
